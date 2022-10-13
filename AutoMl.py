@@ -1,5 +1,26 @@
 class AutoMl():
     def __init__(self,df,target,Estimator=None,test_size=0.2,strategy='mean',std_scale=True,model_train=True,type_model='Classification'):
+        """"
+          df   ::  Data with target column
+        target ::  target Column Name
+        Estimator :None :: By default None, here pass the model instance
+        test_size :0.2 ::Default test size 0.2. Change test size using this parameter
+        strategy :mean ::Deafault strategy for numeric features `mean` ['mean','median']
+                   and use categorical features `mode'
+        
+        std_scale : True :: True >> standard Scalar used for scaling
+                            False >> Min-Max Scalar used for scaling
+        model_train: True ::True >> Model training True return the training result of model
+                            False >> Return the data after preprocessing array
+                              >> x_train,x_test,y_train,y_test
+        type_model:'Classification' :: select type of model `Regression` or 'Classification`
+        -----------------------------------------------------------------------------------------------
+        return ::
+            1. train_test_data_split >> split the data into x_train,x_test,y_train,y_test
+            2. create_model >> after used all preprocessing and model return
+    
+        Copyright (c) 2022 Sanket Suresh Bodake
+        """
         from sklearn.model_selection import train_test_split
         from sklearn.compose import ColumnTransformer
         from sklearn.pipeline import Pipeline
@@ -87,3 +108,6 @@ class AutoMl():
                 model_evalution1(model_pipe,x_test,y_test)
         else:
             return X_train,X_test,y_train,y_test
+
+
+ob=AutoMl()
